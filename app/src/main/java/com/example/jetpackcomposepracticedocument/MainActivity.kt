@@ -35,18 +35,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-                content = {
-                    // Here, SimpleText is a Composable function which is going to describe the contents of
-                    // this activity that will be rendered on the screen.
-                    ShowTextOnCenterScreen("This is the Learn Jetpack Compose By Example tutorial")
-                }
-            )
+            ShowTextOnCenterScreen(text = "congratulation to start learn jetpack compose")
         }
-
     }
 }
 
@@ -74,6 +64,8 @@ fun ShowMessage(name: MessageList) {
     }
 }
 
+
+//a simple button
 @Composable
 fun ClickCounter(click: Int, onClick: () -> Unit) {
     Button(onClick = onClick) {
@@ -84,7 +76,26 @@ fun ClickCounter(click: Int, onClick: () -> Unit) {
 //show a simple text on center screen
 @Composable
 fun ShowTextOnCenterScreen(text: String) {
-    Text(text = text)
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(text = text)
+    }
+}
+
+@Composable
+fun ClickableTextShowAlertDialog(textButton: String,onClickButton:() -> Unit) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Button(onClick = onClickButton) {
+
+        }
+    }
 }
 
 
