@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -35,7 +37,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ShowTextOnCenterScreen(text = "congratulation to start learn jetpack compose")
+            ClickableTextShowAlertDialog(
+                textButton = "click on btn"
+            ) {
+
+            }
         }
     }
 }
@@ -93,7 +99,7 @@ fun ClickableTextShowAlertDialog(textButton: String,onClickButton:() -> Unit) {
         verticalArrangement = Arrangement.Center
     ) {
         Button(onClick = onClickButton) {
-
+            Text(text = textButton)
         }
     }
 }
