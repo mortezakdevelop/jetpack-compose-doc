@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -24,6 +25,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,11 +43,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ClickableTextShowAlertDialog(
-                textButton = "click on btn"
-            ) {
-
-            }
+            Counter()
         }
     }
 }
@@ -70,7 +72,6 @@ fun ShowMessage(name: MessageList) {
     }
 }
 
-
 //a simple button
 @Composable
 fun ClickCounter(click: Int, onClick: () -> Unit) {
@@ -88,6 +89,23 @@ fun ShowTextOnCenterScreen(text: String) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(text = text)
+    }
+}
+
+// counter with remember
+@Composable
+fun Counter(){
+    var count by remember { mutableIntStateOf(0) }
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "Number is $count")
+        Button(onClick = {count++}) {
+            Text("Add number")
+        }
     }
 }
 
